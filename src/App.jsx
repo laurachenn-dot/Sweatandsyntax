@@ -8,10 +8,13 @@ function App() {
   const [count, setCount] = useState(0);
 
   return (
-    <>
-      <AuthenticationPage />
-      {/* add Router to direct to different pages */}
-    </>
+    <Router>
+      <Routes>
+        <Route path="/" element={<AuthenticationPage />} />
+        <Route path="/login" element={<Login />} />
+        {/* You can add more routes here */}
+      </Routes>
+    </Router>
   );
 }
 
