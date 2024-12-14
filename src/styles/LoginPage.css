@@ -1,26 +1,40 @@
+/* LoginPage.css */
+
+/* Styling for the entire page */
 .login-page {
-  text-align: center;
-  padding: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Ensures the content is centered vertically on the full viewport height */
   font-family: Arial, sans-serif;
 }
 
+/* Styling for the form container */
 .login-form {
-  display: inline-block;
-  text-align: left;
-  padding: 1rem;
+  display: flex;
+  flex-direction: column; /* Stack the form fields vertically */
+  align-items: center; /* Center the items horizontally within the form */
+  text-align: left; /* Left-align the text inside the form fields */
+  padding: 2rem;
   border: 1px solid #ccc;
   border-radius: 5px;
+  width: 100%;
+  max-width: 400px; /* Ensures the form does not get too wide */
 }
 
+/* Styling for each input field wrapper */
 .login-form div {
   margin-bottom: 1rem;
+  width: 100%; /* Make sure the input fields take up the full width */
 }
 
+/* Label styling */
 label {
   display: block;
   margin-bottom: 0.5rem;
 }
 
+/* Input field styling */
 input {
   width: 100%;
   padding: 0.5rem;
@@ -28,20 +42,27 @@ input {
   border-radius: 5px;
 }
 
+/* Button styling */
 button {
-  padding: 0.5rem 1rem;
-  background-color: #007bff;
-  color: white;
-  border: none;
+  padding: 0.6rem 1.2rem;
+  font-size: 1rem;
+  border: 2px solid #007bff; /* Adding a border for better visibility */
   border-radius: 5px;
+  background-color: #007bff; /* A solid bright blue background */
+  color: white; /* White text */
   cursor: pointer;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  font-weight: bold; /* Make text bold for better visibility */
 }
 
+/* Hover effect (change background color and add glow) */
 button:hover {
-  background-color: #0056b3;
+  background-color: #0056b3; /* Darker blue when hovered */
+  box-shadow: 0 0 10px rgba(0, 123, 255, 0.5); /* Add glowing effect */
 }
 
-.error {
-  color: red;
-  font-size: 0.9rem;
+/* Focus effect (when the button is focused or clicked) */
+button:focus {
+  outline: none; /* Remove default outline */
+  border: 2px solid #0056b3; /* Highlight border on focus */
 }
