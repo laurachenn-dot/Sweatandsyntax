@@ -8,9 +8,10 @@ function PersonalPage() {
       <Header />
 
       <UserProfile />
+
       {/* 
       <MealPlan />
-      <WorkoutPlan />
+      
         <Footer /> */}
     </>
   );
