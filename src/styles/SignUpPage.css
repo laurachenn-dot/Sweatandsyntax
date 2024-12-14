@@ -1,0 +1,46 @@
+.SignUp {
+  max-width: 400px;
+  margin: auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+button {
+  padding: 12px 24px;
+  background-color: #4caf50; /* Green background */
+  color: white; /* White text */
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease; /* Smooth background color transition */
+}
+
+/* Hover effect */
+button:hover {
+  background-color: #45a049; /* Slightly darker green when hovering */
+}
+
+/* Disabled button style */
+button:disabled {
+  background-color: #b5b5b5; /* Greyed-out button */
+  cursor: not-allowed;
+}
+
+/* Button while submitting */
+button[disabled] {
+  background-color: #cccccc;
+  color: #999999;
+  cursor: not-allowed;
+}
