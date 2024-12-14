@@ -1,0 +1,170 @@
+.workout-goals-page {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+  }
+  
+  .workout-goals-page h2 {
+    font-size: 24px;
+    color: #333;
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  form div {
+    margin-bottom: 15px;
+  }
+  
+  label {
+    font-size: 16px;
+    margin-bottom: 5px;
+  }
+  
+  /* Layout for body part buttons */
+  .focus-part-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
+    margin-top: 10px;
+  }
+  
+  .image-option {
+    text-align: center;
+    cursor: pointer;
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    padding: 10px;
+    transition: all 0.3s ease;
+  }
+  
+  .image-option img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 5px;
+  }
+  
+  .image-option p {
+    font-size: 14px;
+    margin-top: 5px;
+  }
+  
+  .image-option.selected {
+    border-color: #4caf50;
+    background-color: #d9f7d9;
+  }
+  
+  .image-option:hover {
+    transform: scale(1.05);
+  }
+  
+  /* Layout for frequency buttons */
+  .workout-frequency-buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+  }
+  
+  .workout-frequency-buttons button {
+    padding: 10px;
+    font-size: 16px;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 13%;
+  }
+  
+  .workout-frequency-buttons button.selected {
+    background-color: #4caf50;
+    color: white;
+  }
+  
+  .workout-frequency-buttons button:hover {
+    background-color: #e0e0e0;
+  }
+  
+  /* Layout for goal buttons */
+  .workout-goal-buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin-top: 10px;
+  }
+  
+  .goal-button {
+    padding: 15px 30px;
+    font-size: 16px;
+    background-color: #f0f0f0;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 30%;
+    text-align: center;
+  }
+  
+  .goal-button.selected {
+    background-color: #4caf50;
+    color: white;
+  }
+  
+  .goal-button:hover {
+    background-color: #e0e0e0;
+  }
+  
+  /* Layout for equipment buttons */
+  .equipment-buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+  }
+  
+  .equipment-option {
+    padding: 15px 30px;
+    font-size: 16px;
+    background-color: #f0f0f0;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 45%; /* Adjust width for two buttons */
+    text-align: center;
+  }
+  
+  .equipment-option.selected {
+    background-color: #4caf50;
+    color: white;
+  }
+  
+  .equipment-option:hover {
+    background-color: #e0e0e0;
+  }
+  
+  /* Button styling */
+  button {
+    padding: 10px;
+    font-size: 16px;
+    background-color: #4caf50;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  button:hover {
+    background-color: #45a049;
+  }
+  
+  button:disabled {
+    background-color: #b5b5b5;
+    cursor: not-allowed;
+  }
+  
