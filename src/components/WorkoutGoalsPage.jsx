@@ -17,7 +17,7 @@ const WorkoutGoalsPage = () => {
   const { name, age, weight, height, activityLevel } = location.state || {}; // Extract the state passed from SummaryPage
 
   // Define the state for the user's input
-  const [focusPart, setFocusPart] = useState("");
+  const [focusParts, setFocusParts] = useState([]); // Updated to handle multiple body parts
   const [workoutFrequency, setWorkoutFrequency] = useState(null);
   const [workoutGoal, setWorkoutGoal] = useState("");
   const [equipment, setEquipment] = useState(""); // New state for equipment
@@ -33,7 +33,7 @@ const WorkoutGoalsPage = () => {
         weight,
         height,
         activityLevel,
-        focusPart,
+        focusParts, // Updated to pass array of body parts
         workoutFrequency,
         workoutGoal,
         equipment, // Include equipment in the passed state
@@ -41,29 +41,63 @@ const WorkoutGoalsPage = () => {
     });
   };
 
+  // Handle the change in body parts focus (button click)
+  const handleFocusChange = (partId) => {
+    setFocusParts(
+      (prev) =>
+        prev.includes(partId)
+          ? prev.filter((part) => part !== partId) // Remove the part if it's already selected
+          : [...prev, partId] // Add the part if it's not selected
+    );
+  };
+
   return (
     <div className="workout-goals-page">
       <h2>Hello, {name}! Let's get to know your workout goals.</h2>
       <form onSubmit={handleSubmit}>
-        {/* Question 1: Which body part do you mostly want to focus on? */}
+        {/* Question 1: Which body parts do you mostly want to focus on? */}
         <div>
-          <label>Which body part do you mostly want to focus on?</label>
+          <label>Which body parts do you mostly want to focus on?</label>
           <div className="focus-part-buttons">
             {[
-              { id: "legs", image: legsImage, label: "Legs" },
-              { id: "chest", image: chestImage, label: "Chest" },
-              { id: "abs", image: absImage, label: "Abs" },
-              { id: "arms", image: armsImage, label: "Arms" },
-              { id: "back", image: backImage, label: "Back" },
-              { id: "shoulder", image: shoulderImage, label: "Shoulders" },
+              {
+                id: "legs",
+                image: legsImage,
+                label: "Legs",
+              },
+              {
+                id: "chest",
+                image: chestImage,
+                label: "Chest",
+              },
+              {
+                id: "abs",
+                image: absImage,
+                label: "Abs",
+              },
+              {
+                id: "arms",
+                image: armsImage,
+                label: "Arms",
+              },
+              {
+                id: "back",
+                image: backImage,
+                label: "Back",
+              },
+              {
+                id: "shoulder",
+                image: shoulderImage,
+                label: "Shoulders",
+              },
             ].map((part) => (
               <button
                 key={part.id}
                 type="button"
                 className={`image-option ${
-                  focusPart === part.id ? "selected" : ""
-                }`}
-                onClick={() => setFocusPart(part.id)}
+                  focusParts.includes(part.id) ? "selected" : ""
+                }`} // Add 'selected' class if the part is selected
+                onClick={() => handleFocusChange(part.id)} // Toggle the selection
               >
                 <img src={part.image} alt={part.label} />
                 <p>{part.label}</p>
@@ -132,7 +166,7 @@ const WorkoutGoalsPage = () => {
         <button
           type="submit"
           disabled={
-            !focusPart ||
+            focusParts.length === 0 ||
             workoutFrequency === null ||
             !workoutGoal ||
             !equipment

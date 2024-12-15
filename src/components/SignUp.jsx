@@ -7,6 +7,7 @@ const SignUp = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [error, setError] = useState(""); // State to handle errors (if any)
 
   const navigate = useNavigate(); // Hook to navigate to another page
 
@@ -27,7 +28,8 @@ const SignUp = () => {
     );
   };
 
-  const handleSubmit = (event) => {
+  // Handle form submission
+  const handleSubmit = async (event) => {
     event.preventDefault();
 
     if (!validateForm()) {
@@ -35,16 +37,40 @@ const SignUp = () => {
       return;
     }
 
-    // After successful sign-up, navigate to the UserInputForm page
-    navigate("/user-input", {
-      state: { name, email }, // Pass the name and email to the next page
-    });
+    // Prepare user data
+    const userData = { name, email, password };
+
+    try {
+      // Send data to backend
+      const response = await fetch("/api/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(userData), // Send the user data in the request body
+      });
+
+      const result = await response.json();
+
+      if (response.ok) {
+        // After successful registration, navigate to the UserInputForm page
+        navigate("/user-input", {
+          state: { name, email }, // Pass the name and email to the next page
+        });
+      } else {
+        // Handle any error from the backend
+        setError(result.message || "Something went wrong. Please try again.");
+      }
+    } catch (error) {
+      setError("Network error. Please try again later.");
+    }
   };
 
   return (
     <div className="SignUp">
       <h2>Sign Up</h2>
       <form onSubmit={handleSubmit}>
+        {/* Name Input */}
         <div>
           <label>Name</label>
           <input
@@ -55,6 +81,7 @@ const SignUp = () => {
           />
         </div>
 
+        {/* Email Input */}
         <div>
           <label>Email</label>
           <input
@@ -65,6 +92,7 @@ const SignUp = () => {
           />
         </div>
 
+        {/* Password Input */}
         <div>
           <label>Password</label>
           <input
@@ -75,6 +103,7 @@ const SignUp = () => {
           />
         </div>
 
+        {/* Confirm Password Input */}
         <div>
           <label>Confirm Password</label>
           <input
@@ -85,6 +114,10 @@ const SignUp = () => {
           />
         </div>
 
+        {/* Display Error */}
+        {error && <div className="error-message">{error}</div>}
+
+        {/* Submit Button */}
         <button type="submit" disabled={!validateForm()}>
           Sign Up
         </button>

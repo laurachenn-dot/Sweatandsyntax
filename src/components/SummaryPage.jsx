@@ -1,6 +1,7 @@
 import React from "react";
 import { useLocation, useNavigate } from "react-router-dom"; // We use useLocation to access passed data
-import profileImage from "../assets/images/1bodytype.png"; // Import your image
+import maleProfileImage from "../assets/images/2bodytype.png"; // Import male image
+import femaleProfileImage from "../assets/images/1bodytype.png"; // Import female image
 import "../styles/SummaryPage.css"; // Make sure this path is correct
 
 const SummaryPage = () => {
@@ -11,12 +12,21 @@ const SummaryPage = () => {
   const { name, age, weight, height, activityLevel, gender } =
     location.state || {};
 
+  // Log the gender value to verify it's what you expect
+  console.log("User Gender:", gender); // Check the gender value
+
   const handleGoToWorkout = () => {
     // Navigate to WorkoutGoalsPage with current user data
     navigate("/workout-goals", {
       state: { name, age, weight, height, activityLevel, gender },
     });
   };
+
+  // Set the profile image based on the gender
+  const profileImage =
+    gender && gender.toLowerCase() === "male"
+      ? maleProfileImage
+      : femaleProfileImage;
 
   return (
     <div className="summary-container">
